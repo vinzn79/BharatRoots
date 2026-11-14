@@ -1,6 +1,11 @@
 /* Indian Heritage Learning Hub: interactive features. Plain JavaScript, no libraries. */
 (function () {
   "use strict";
+  var T = window.I18N || {};
+  var t = function (k, d) { return T[k] != null ? T[k] : d; };
+  /* Path to the site root, so pictures load from language folders (/hi/, /ta/ ...) too */
+  var mainScript = document.querySelector('script[src$="js/main.js"]');
+  var BASE = mainScript ? mainScript.getAttribute("src").replace("js/main.js", "") : "";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
@@ -39,10 +44,10 @@
         b.addEventListener("click", function () {
           if (done) return;
           done = true; answered++;
-          if (oi === it.a) { b.classList.add("right"); score++; fb.textContent = "Correct! " + (it.e || ""); }
-          else { b.classList.add("wrong"); opts.children[it.a].classList.add("right"); fb.textContent = "Not quite. " + (it.e || ""); }
+          if (oi === it.a) { b.classList.add("right"); score++; fb.textContent = t("correct", "Correct!") + " " + (it.e || ""); }
+          else { b.classList.add("wrong"); opts.children[it.a].classList.add("right"); fb.textContent = t("wrong", "Not quite.") + " " + (it.e || ""); }
           if (answered === items.length) {
-            scoreEl.textContent = "You scored " + score + " out of " + items.length + ". " + (score === items.length ? "Wonderful!" : "Well done for trying!");
+            scoreEl.textContent = t("score", "You scored {s} out of {n}.").replace("{s}", score).replace("{n}", items.length) + " " + (score === items.length ? t("perfect", "Wonderful!") : t("tried", "Well done for trying!"));
             again.style.display = "inline-block";
           }
         });
@@ -52,12 +57,12 @@
     });
     var scoreEl = document.createElement("p"); scoreEl.className = "score"; box.appendChild(scoreEl);
     var again = document.createElement("button"); again.className = "btn ghost"; again.type = "button";
-    again.textContent = "Try again"; again.style.display = "none";
+    again.textContent = t("again", "Try again"); again.style.display = "none";
     again.addEventListener("click", function () { buildQuiz(box, items); });
     box.appendChild(again);
   }
   $$(".quiz[data-quiz]").forEach(function (box) {
-    try { buildQuiz(box, JSON.parse(box.getAttribute("data-quiz"))); } catch (e) { box.textContent = "Quiz could not load."; }
+    try { buildQuiz(box, JSON.parse(box.getAttribute("data-quiz"))); } catch (e) { box.textContent = t("quizErr", "Quiz could not load."); }
   });
 
   /* ---------- Generic tag filters (Teerth Sthal, recipes) ---------- */
@@ -78,7 +83,7 @@
   tagFilter("#dietFilters", "#recipeGrid > .recipe", "#recipeEmpty");
 
   /* ---------- Festivals Compass ---------- */
-  var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  var MONTHS = t("months", ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]);
   var festGrid = $("#festGrid");
   if (festGrid) {
     var month = String(new Date().getMonth()), trad = "all";
@@ -90,7 +95,7 @@
         c.classList.toggle("show", okM && okT); if (okM && okT) shown++;
       });
       $$(".month-tabs button").forEach(function (b) { b.classList.toggle("on", b.getAttribute("data-m") === month); });
-      $("#monthTitle").textContent = month === "all" ? "All year" : MONTHS[+month];
+      $("#monthTitle").textContent = month === "all" ? t("allYear", "All year") : MONTHS[+month];
       $("#festEmpty").style.display = shown ? "none" : "block";
     };
     $(".month-tabs").addEventListener("click", function (e) {
@@ -107,6 +112,9 @@
 
   /* ---------- State tile map ---------- */
   var tilemap = $("#tilemap");
+  if (tilemap && window.INDIA_STATES && T.states) {
+    window.INDIA_STATES.forEach(function (s) { var x = T.states[s.id]; if (x) for (var k in x) s[k] = x[k]; });
+  }
   if (tilemap && window.INDIA_STATES) {
     var panel = $("#statePanel");
     window.INDIA_STATES.forEach(function (s) {
@@ -117,19 +125,19 @@
       b.style.gridRow = String(s.r + 1);
       b.textContent = s.id;
       b.title = s.n;
-      b.setAttribute("aria-label", s.n + (s.ut ? " (union territory)" : ""));
+      b.setAttribute("aria-label", s.n + (s.ut ? " (" + t("ut", "Union territory") + ")" : ""));
       b.addEventListener("click", function () {
         $$(".tile", tilemap).forEach(function (t) { t.classList.toggle("on", t === b); });
         panel.innerHTML =
           '<h3 style="margin-top:0">' + s.n + "</h3>" +
-          '<div class="tags"><span class="tag">' + (s.ut ? "Union territory" : "State") + '</span><span class="tag">' +
-          { north: "North", south: "South", east: "East", west: "West", central: "Central", ne: "Northeast" }[s.region] + " India</span></div>" +
-          "<p><strong>Capital:</strong> " + s.cap + "</p>" +
-          "<p><strong>Main languages:</strong> " + s.lang + "</p>" +
-          "<p><strong>Festivals:</strong> " + s.fest + "</p>" +
-          "<p><strong>Signature food:</strong> " + s.food + "</p>" +
-          "<p><strong>Places to see:</strong> " + s.see + "</p>" +
-          '<div class="activity"><strong>Kid-friendly fact:</strong> ' + s.kid + "</div>";
+          '<div class="tags"><span class="tag">' + (s.ut ? t("ut", "Union territory") : t("state", "State")) + '</span><span class="tag">' +
+          t("regions", { north: "North India", south: "South India", east: "East India", west: "West India", central: "Central India", ne: "Northeast India" })[s.region] + "</span></div>" +
+          "<p><strong>" + t("capital", "Capital") + ":</strong> " + s.cap + "</p>" +
+          "<p><strong>" + t("languages", "Main languages") + ":</strong> " + s.lang + "</p>" +
+          "<p><strong>" + t("festivals", "Festivals") + ":</strong> " + s.fest + "</p>" +
+          "<p><strong>" + t("food", "Signature food") + ":</strong> " + s.food + "</p>" +
+          "<p><strong>" + t("see", "Places to see") + ":</strong> " + s.see + "</p>" +
+          '<div class="activity"><strong>' + t("kidFact", "Kid-friendly fact") + ':</strong> ' + s.kid + "</div>";
         if (window.innerWidth < 860) panel.scrollIntoView({ behavior: "smooth", block: "start" });
       });
       tilemap.appendChild(b);
@@ -163,18 +171,23 @@
       ["spot-diya.svg", "His parents smiled and gave him the fruit. The lesson: being wise and thoughtful can matter more than being fast. And family means the world."]
     ]}
   };
+  if (T.stories) Object.keys(T.stories).forEach(function (k) {
+    if (!STORIES[k]) return;
+    STORIES[k].title = T.stories[k].title;
+    T.stories[k].pages.forEach(function (txt, i) { if (STORIES[k].pages[i]) STORIES[k].pages[i][1] = txt; });
+  });
   $$(".story[data-story]").forEach(function (box) {
     var st = STORIES[box.getAttribute("data-story")]; if (!st) return;
     var i = 0;
     box.innerHTML = '<h3 style="margin-top:0">' + st.title + '</h3><img class="story-img" alt=""><p class="story-text" aria-live="polite"></p>' +
-      '<div class="story-nav"><button class="btn ghost" type="button">← Back</button><span class="story-count"></span><button class="btn" type="button">Next →</button></div>';
+      '<div class="story-nav"><button class="btn ghost" type="button">← ' + t("back", "Back") + '</button><span class="story-count"></span><button class="btn" type="button">' + t("next", "Next") + ' →</button></div>';
     var img = $(".story-img", box), txt = $(".story-text", box), cnt = $(".story-count", box), btns = $$("button", box);
     function show() {
-      img.src = "images/" + st.pages[i][0];
+      img.src = BASE + "images/" + st.pages[i][0];
       txt.textContent = st.pages[i][1];
       cnt.textContent = (i + 1) + " / " + st.pages.length;
       btns[0].disabled = i === 0;
-      btns[1].textContent = i === st.pages.length - 1 ? "Read again ↺" : "Next →";
+      btns[1].textContent = i === st.pages.length - 1 ? t("readAgain", "Read again") + " ↺" : t("next", "Next") + " →";
     }
     btns[0].addEventListener("click", function () { if (i > 0) { i--; show(); } });
     btns[1].addEventListener("click", function () { i = i === st.pages.length - 1 ? 0 : i + 1; show(); });
@@ -206,7 +219,7 @@
       pick.forEach(function (p) {
         var others = L.filter(function (x) { return x !== p; }).sort(function () { return Math.random() - 0.5; }).slice(0, 3);
         var opts = others.concat([p]).sort(function () { return Math.random() - 0.5; });
-        items.push({ q: "Which " + SCRIPTS[cur].name + " letter says “" + p[1] + "”?", o: opts.map(function (x) { return x[0]; }), a: opts.indexOf(p), e: p[0] + " = " + p[1] });
+        items.push({ q: t("letterQ", "Which {s} letter says “{x}”?").replace("{s}", t("scripts", {})[cur] || SCRIPTS[cur].name).replace("{x}", p[1]), o: opts.map(function (x) { return x[0]; }), a: opts.indexOf(p), e: p[0] + " = " + p[1] });
       });
       buildQuiz($("#letterQuiz"), items);
       $$("#letterQuiz .opts button").forEach(function (b) { b.classList.add("glyph-opt"); b.lang = cur; });
