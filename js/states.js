@@ -39,3 +39,48 @@ window.INDIA_STATES = [
   {id:"PY", n:"Puducherry", ut:true, region:"south", c:4, r:8, cap:"Puducherry", lang:"Tamil, Malayalam, Telugu, French, English", fest:"Pongal, Bastille Day, Christmas", food:"Creole-Tamil fusion, seafood", see:"French Quarter, Promenade Beach", kid:"Puducherry is spread across four separate pieces of land in three different states."},
   {id:"AN", n:"Andaman and Nicobar Islands", ut:true, region:"east", c:6, r:8, cap:"Sri Vijaya Puram (formerly Port Blair)", lang:"Hindi, English, Bengali, Tamil; Nicobarese", fest:"Island Tourism Festival", food:"Seafood, coconut curries", see:"Cellular Jail, Radhanagar Beach, Ross Island", kid:"The territory has more than 500 islands, and only a few dozen are inhabited."}
 ];
+
+/* Extra map layers: fam = language family of the main language (ia = Indo-Aryan, dr = Dravidian,
+   tb = Tibeto-Burman, aa = Austroasiatic); dance; craft; unesco = UNESCO World Heritage properties
+   (or parts of them) in the state, as of the 48th World Heritage Committee session, July 2026. */
+(function () {
+  var X = {
+    JK:{fam:"ia", dance:"Rouf, Dumhal", craft:"Pashmina shawls, papier-mâché", unesco:[]},
+    LA:{fam:"tb", dance:"Cham (masked monastery dance)", craft:"Thangka painting, pashmina from Changthang goats", unesco:[]},
+    PB:{fam:"ia", dance:"Bhangra, Gidda", craft:"Phulkari embroidery", unesco:[]},
+    HP:{fam:"ia", dance:"Nati", craft:"Kullu shawls, Chamba rumal", unesco:["Great Himalayan National Park","Kalka–Shimla Railway (part of Mountain Railways of India)"]},
+    CH:{fam:"ia", dance:"Bhangra, Gidda", craft:"Nek Chand's recycled-art Rock Garden", unesco:["Capitol Complex (part of Le Corbusier's architectural work)"]},
+    HR:{fam:"ia", dance:"Phag, Ghoomar", craft:"Panipat handloom rugs and durries", unesco:["Kalka station, start of the Kalka–Shimla Railway (Mountain Railways of India)"]},
+    DL:{fam:"ia", dance:"Kathak (home of the national Kathak Kendra)", craft:"Zardozi embroidery", unesco:["Red Fort Complex","Qutb Minar and its Monuments","Humayun's Tomb"]},
+    UK:{fam:"ia", dance:"Choliya, Langvir Nritya", craft:"Aipan floor art, ringal bamboo baskets", unesco:["Nanda Devi and Valley of Flowers National Parks"]},
+    RJ:{fam:"ia", dance:"Ghoomar, Kalbelia", craft:"Blue pottery, block printing", unesco:["Hill Forts of Rajasthan","Jantar Mantar, Jaipur","Keoladeo National Park","Jaipur City"]},
+    UP:{fam:"ia", dance:"Kathak (Lucknow and Banaras gharanas), Raslila", craft:"Chikankari embroidery, Banarasi silk", unesco:["Taj Mahal","Agra Fort","Fatehpur Sikri","Ancient Buddhist Site of Sarnath (2026)"]},
+    BR:{fam:"ia", dance:"Jat-Jatin, Jhijhiya", craft:"Madhubani (Mithila) painting", unesco:["Mahabodhi Temple Complex, Bodh Gaya","Nalanda Mahavihara"]},
+    SK:{fam:"ia", dance:"Singhi Chham (snow lion dance)", craft:"Thangka painting, hand-knotted carpets", unesco:["Khangchendzonga National Park (mixed natural and cultural site)"]},
+    AR:{fam:"tb", dance:"Aji Lhamu, Ponung", craft:"Monpa handmade paper, cane and bamboo work", unesco:[]},
+    AS:{fam:"ia", dance:"Sattriya (classical), Bihu", craft:"Muga silk, bell-metal craft", unesco:["Kaziranga National Park","Manas Wildlife Sanctuary","Moidams of the Ahom dynasty"]},
+    NL:{fam:"tb", dance:"Naga war and harvest dances", craft:"Naga shawls woven on loin looms", unesco:[]},
+    GJ:{fam:"ia", dance:"Garba, Raas", craft:"Patola silk, Bandhani tie-dye", unesco:["Champaner-Pavagadh","Rani-ki-Vav, Patan","Historic City of Ahmedabad","Dholavira: a Harappan City"]},
+    MP:{fam:"ia", dance:"Matki, Gaur Maria (Bison Horn) dance", craft:"Gond painting, Chanderi weaving", unesco:["Khajuraho Group of Monuments","Buddhist Monuments at Sanchi","Rock Shelters of Bhimbetka"]},
+    JH:{fam:"ia", dance:"Chhau (Seraikela style), Jhumar", craft:"Sohrai and Khovar wall painting, Dokra metal casting", unesco:[]},
+    WB:{fam:"ia", dance:"Chhau (Purulia style), Rabindra Nritya", craft:"Kantha embroidery, Bishnupur terracotta", unesco:["Sundarbans National Park","Darjeeling Himalayan Railway (Mountain Railways of India)","Santiniketan"]},
+    ML:{fam:"aa", dance:"Shad Suk Mynsiem (Khasi), Wangala (Garo)", craft:"Cane and bamboo weaving", unesco:[]},
+    MN:{fam:"tb", dance:"Manipuri (classical), Ras Lila", craft:"Longpi black stone pottery", unesco:[]},
+    DN:{fam:"ia", dance:"Tarpa dance", craft:"Warli painting, bamboo crafts", unesco:[]},
+    MH:{fam:"ia", dance:"Lavani, Koli", craft:"Paithani silk, Warli painting", unesco:["Ajanta Caves","Ellora Caves","Elephanta Caves","Chhatrapati Shivaji Terminus","Victorian Gothic and Art Deco Ensembles of Mumbai","Western Ghats (part)","Maratha Military Landscapes (11 forts)"]},
+    CG:{fam:"ia", dance:"Raut Nacha, Panthi", craft:"Bastar Dhokra bell-metal craft", unesco:[]},
+    OD:{fam:"ia", dance:"Odissi (classical), Gotipua", craft:"Pattachitra painting, Cuttack silver filigree", unesco:["Sun Temple, Konark"]},
+    TR:{fam:"ia", dance:"Hojagiri", craft:"Bamboo and cane work", unesco:[]},
+    MZ:{fam:"tb", dance:"Cheraw (bamboo dance)", craft:"Puan weaving", unesco:[]},
+    GA:{fam:"ia", dance:"Fugdi, Dekhni", craft:"Kaavi wall art, coconut-shell craft", unesco:["Churches and Convents of Goa"]},
+    TS:{fam:"dr", dance:"Perini Shivatandavam", craft:"Pochampally ikat, Nirmal paintings", unesco:["Kakatiya Rudreshwara (Ramappa) Temple"]},
+    LD:{fam:"dr", dance:"Lava (Minicoy), Kolkali", craft:"Coir and coconut crafts", unesco:[]},
+    KA:{fam:"dr", dance:"Yakshagana", craft:"Channapatna toys, Bidriware, Mysore silk", unesco:["Group of Monuments at Hampi","Group of Monuments at Pattadakal","Sacred Ensembles of the Hoysalas","Western Ghats (part)"]},
+    AP:{fam:"dr", dance:"Kuchipudi (classical)", craft:"Kondapalli toys, Kalamkari", unesco:[]},
+    KL:{fam:"dr", dance:"Kathakali, Mohiniyattam", craft:"Aranmula metal mirror, coir", unesco:["Western Ghats (part)"]},
+    TN:{fam:"dr", dance:"Bharatanatyam (classical)", craft:"Thanjavur painting, Kanchipuram silk", unesco:["Great Living Chola Temples","Group of Monuments at Mahabalipuram","Nilgiri Mountain Railway (Mountain Railways of India)","Western Ghats (part)","Gingee Fort (part of Maratha Military Landscapes)"]},
+    PY:{fam:"dr", dance:"Garadi", craft:"Handmade paper, Villianur terracotta", unesco:[]},
+    AN:{fam:"ia", dance:"Nicobarese community dances", craft:"Shell craft, cane work", unesco:[]}
+  };
+  (window.INDIA_STATES || []).forEach(function (s) { var x = X[s.id]; if (x) for (var k in x) s[k] = x[k]; });
+})();
