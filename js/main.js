@@ -250,3 +250,17 @@
     draw();
   }
 })();
+
+/* ---------- Language switcher ---------- */
+(function () {
+  var sels = document.querySelectorAll("select.lang-switch");
+  for (var i = 0; i < sels.length; i++) {
+    sels[i].addEventListener("change", function (e) {
+      var url = e.target.value;
+      if (url) {
+        try { localStorage.setItem("ihl-lang", e.target.selectedOptions[0].getAttribute("lang")); } catch (err) {}
+        window.location.href = url + window.location.hash;
+      }
+    });
+  }
+})();

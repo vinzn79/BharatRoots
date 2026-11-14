@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -9,6 +9,15 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Heritage Hub">
   <meta name="format-detection" content="telephone=no">
+  <link rel="alternate" hreflang="en" href="https://bharatroots.net/">
+  <link rel="alternate" hreflang="hi" href="https://bharatroots.net/hi/">
+  <link rel="alternate" hreflang="bn" href="https://bharatroots.net/bn/">
+  <link rel="alternate" hreflang="mr" href="https://bharatroots.net/mr/">
+  <link rel="alternate" hreflang="te" href="https://bharatroots.net/te/">
+  <link rel="alternate" hreflang="ta" href="https://bharatroots.net/ta/">
+  <link rel="alternate" hreflang="gu" href="https://bharatroots.net/gu/">
+  <link rel="alternate" hreflang="kn" href="https://bharatroots.net/kn/">
+  <link rel="alternate" hreflang="ml" href="https://bharatroots.net/ml/">
   <link rel="icon" type="image/svg+xml" href="images/logo.svg">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
@@ -29,8 +38,9 @@
   <nav class="sidebar" id="sidebar" aria-label="Site sections">
     <a class="brand" href="index.html">
       <img src="images/logo.svg" alt="">
-      <span class="brand-title">Indian Heritage<br>Learning Hub<small>ONE SIMPLE LESSON AT A TIME</small></span>
+      <span class="brand-title">Indian Heritage Learning Hub<small>ONE SIMPLE LESSON AT A TIME</small></span>
     </a>
+    <div class="side-lang"><label class="lang-label" for="langSide">Language / Language</label><select class="lang lang-switch" id="langSide"><option value="index.html" lang="en" selected>English · English</option><option value="hi/index.html" lang="hi">हिन्दी · Hindi</option><option value="bn/index.html" lang="bn">বাংলা · Bengali</option><option value="mr/index.html" lang="mr">मराठी · Marathi</option><option value="te/index.html" lang="te">తెలుగు · Telugu</option><option value="ta/index.html" lang="ta">தமிழ் · Tamil</option><option value="gu/index.html" lang="gu">ગુજરાતી · Gujarati</option><option value="kn/index.html" lang="kn">ಕನ್ನಡ · Kannada</option><option value="ml/index.html" lang="ml">മലയാളം · Malayalam</option><optgroup label="Coming soon"><option disabled lang="ur">اردو · Urdu</option><option disabled lang="or">ଓଡ଼ିଆ · Odia</option><option disabled lang="pa">ਪੰਜਾਬੀ · Punjabi</option><option disabled lang="as">অসমীয়া · Assamese</option><option disabled lang="mai">मैथिली · Maithili</option><option disabled lang="sat">ᱥᱟᱱᱛᱟᱲᱤ · Santali</option><option disabled lang="ks">कॉशुर / كٲشُر · Kashmiri</option><option disabled lang="ne">नेपाली · Nepali</option><option disabled lang="sd">سنڌي · Sindhi</option><option disabled lang="kok">कोंकणी · Konkani</option><option disabled lang="doi">डोगरी · Dogri</option><option disabled lang="mni">ꯃꯤꯇꯩꯂꯣꯟ · Manipuri</option><option disabled lang="brx">बर' · Bodo</option><option disabled lang="sa">संस्कृतम् · Sanskrit</option></optgroup></select></div>
     <ul class="nav">
         <li><a href="index.html" class="active" aria-current="page"><span class="num">1</span>Home</a></li>
         <li><a href="history.html"><span class="num">2</span>History & Civilization</a></li>
@@ -48,6 +58,7 @@
   </nav>
 
   <main class="main" id="top">
+    
     <section class="page-banner">
       <div>
         
@@ -81,20 +92,8 @@
         <div class="card">
           <img class="spot" src="images/spot-lotus.svg" alt="">
           <h3>Choose your language</h3>
-          <p>
-            <label for="lang" class="sr">Language</label>
-            <select class="lang" id="lang">
-              <option>English</option>
-              <option disabled>हिन्दी (Hindi): coming soon</option>
-              <option disabled>தமிழ் (Tamil): coming soon</option>
-              <option disabled>తెలుగు (Telugu): coming soon</option>
-              <option disabled>ગુજરાતી (Gujarati): coming soon</option>
-              <option disabled>বাংলা (Bengali): coming soon</option>
-              <option disabled>മലയാളം (Malayalam): coming soon</option>
-              <option disabled>मराठी (Marathi): coming soon</option>
-            </select>
-          </p>
-          <p style="font-size:.92rem">More languages are being prepared.</p>
+          <label class="lang-label" for="langHero">Language / Language</label><select class="lang lang-switch" id="langHero"><option value="index.html" lang="en" selected>English · English</option><option value="hi/index.html" lang="hi">हिन्दी · Hindi</option><option value="bn/index.html" lang="bn">বাংলা · Bengali</option><option value="mr/index.html" lang="mr">मराठी · Marathi</option><option value="te/index.html" lang="te">తెలుగు · Telugu</option><option value="ta/index.html" lang="ta">தமிழ் · Tamil</option><option value="gu/index.html" lang="gu">ગુજરાતી · Gujarati</option><option value="kn/index.html" lang="kn">ಕನ್ನಡ · Kannada</option><option value="ml/index.html" lang="ml">മലയാളം · Malayalam</option><optgroup label="Coming soon"><option disabled lang="ur">اردو · Urdu</option><option disabled lang="or">ଓଡ଼ିଆ · Odia</option><option disabled lang="pa">ਪੰਜਾਬੀ · Punjabi</option><option disabled lang="as">অসমীয়া · Assamese</option><option disabled lang="mai">मैथिली · Maithili</option><option disabled lang="sat">ᱥᱟᱱᱛᱟᱲᱤ · Santali</option><option disabled lang="ks">कॉशुर / كٲشُر · Kashmiri</option><option disabled lang="ne">नेपाली · Nepali</option><option disabled lang="sd">سنڌي · Sindhi</option><option disabled lang="kok">कोंकणी · Konkani</option><option disabled lang="doi">डोगरी · Dogri</option><option disabled lang="mni">ꯃꯤꯇꯩꯂꯣꯟ · Manipuri</option><option disabled lang="brx">बर' · Bodo</option><option disabled lang="sa">संस्कृतम् · Sanskrit</option></optgroup></select>
+          <p style="font-size:.92rem;margin-top:8px">8 languages are ready; all 22 of India's scheduled languages are on the way.</p>
         </div>
       </div>
 
