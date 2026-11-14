@@ -77,7 +77,7 @@ body {
 }
 .brand img { width: 46px; height: 46px; }
 .brand-title { font-family: "Marcellus", Georgia, serif; font-size: 1.15rem; line-height: 1.2; }
-.brand-title small { display: block; font-family: "Mukta", sans-serif; font-size: 0.78rem; opacity: 0.8; letter-spacing: 0.04em; }
+.brand-title small { display: block; font-family: "Mukta", var(--script-font, "Mukta"), "Nirmala UI", sans-serif; font-size: 0.78rem; opacity: 0.8; letter-spacing: 0.04em; }
 
 .nav { list-style: none; margin: 0; padding: 12px 10px 20px; }
 .nav li { margin: 2px 0; }
@@ -197,7 +197,7 @@ a:hover { color: #7a3210; }
 .section > h2:first-child { margin-top: 0; }
 .section-num {
   display: inline-block;
-  font-family: "Mukta", sans-serif;
+  font-family: "Mukta", var(--script-font, "Mukta"), "Nirmala UI", sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
   background: var(--tag-bg);
@@ -522,3 +522,5 @@ select.lang { max-width: 100%; min-height: 40px; }
 html:not([lang="en"]) h1 { font-size: clamp(1.5rem, 2.5vw, 2.1rem); }
 html[lang="ta"] h1, html[lang="ml"] h1 { font-size: clamp(1.4rem, 2.2vw, 1.85rem); }
 html:not([lang="en"]) h2 { font-size: 1.45rem; }
+/* Letter-spacing breaks Indian-script conjuncts: switch it off outside English */
+html:not([lang="en"]) .brand-title small, html:not([lang="en"]) .eyebrow, html:not([lang="en"]) .lang-label { letter-spacing: 0; text-transform: none; }
