@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="40 110 440 340" role="img" aria-label="Peacock, national bird of India">
+  <defs>
+    <g id="eye">
+      <ellipse rx="15" ry="20" fill="#9fd3c7" stroke="#2f7d74" stroke-width="1.6"/>
+      <ellipse rx="9" ry="12" fill="#e8c86a"/>
+      <ellipse rx="5.5" ry="7.5" fill="#2c5f9e"/>
+    </g>
+    <g id="feather">
+      <path d="M0 0 C-14 -60 -12 -120 0 -172 C12 -120 14 -60 0 0Z" fill="#d6ecd8" stroke="#4f9a7a" stroke-width="1.4"/>
+      <line x1="0" y1="0" x2="0" y2="-140" stroke="#4f9a7a" stroke-width="1"/>
+      <use href="#eye" y="-152"/>
+    </g>
+  </defs>
+  <path d="M60 340 A200 200 0 0 1 460 340 Z" fill="#e6f3e6" stroke="#9cc9a8" stroke-width="1.5"/>
+  <g transform="translate(260 340)">
+    <use href="#feather" transform="rotate(-84.0) scale(1.12)"/><use href="#feather" transform="rotate(-72.0) scale(1.12)"/><use href="#feather" transform="rotate(-60.0) scale(1.12)"/><use href="#feather" transform="rotate(-48.0) scale(1.12)"/><use href="#feather" transform="rotate(-36.0) scale(1.12)"/><use href="#feather" transform="rotate(-24.0) scale(1.12)"/><use href="#feather" transform="rotate(-12.0) scale(1.12)"/><use href="#feather" transform="rotate(0.0) scale(1.12)"/><use href="#feather" transform="rotate(12.0) scale(1.12)"/><use href="#feather" transform="rotate(24.0) scale(1.12)"/><use href="#feather" transform="rotate(36.0) scale(1.12)"/><use href="#feather" transform="rotate(48.0) scale(1.12)"/><use href="#feather" transform="rotate(60.0) scale(1.12)"/><use href="#feather" transform="rotate(72.0) scale(1.12)"/><use href="#feather" transform="rotate(84.0) scale(1.12)"/><use href="#feather" transform="rotate(-84.0) scale(0.70)"/><use href="#feather" transform="rotate(-67.2) scale(0.70)"/><use href="#feather" transform="rotate(-50.4) scale(0.70)"/><use href="#feather" transform="rotate(-33.6) scale(0.70)"/><use href="#feather" transform="rotate(-16.8) scale(0.70)"/><use href="#feather" transform="rotate(0.0) scale(0.70)"/><use href="#feather" transform="rotate(16.8) scale(0.70)"/><use href="#feather" transform="rotate(33.6) scale(0.70)"/><use href="#feather" transform="rotate(50.4) scale(0.70)"/><use href="#feather" transform="rotate(67.2) scale(0.70)"/><use href="#feather" transform="rotate(84.0) scale(0.70)"/>
+  </g>
+  <g stroke="#1f4f8a" stroke-width="2" stroke-linejoin="round">
+    <path d="M244 360 C232 318 236 280 250 250 C248 232 250 214 256 200 C260 190 272 188 276 198 C280 210 270 226 270 244 C284 280 290 318 280 360 C270 380 252 380 244 360Z" fill="#5b8fd1"/>
+    <path d="M277 196 L294 201 L277 205Z" fill="#e2a64e" stroke="#a06b20"/>
+  </g>
+  <circle cx="268" cy="196" r="3" fill="#1d2b3a"/>
+  <path d="M266 204 Q258 208 256 216" stroke="#ffffff" stroke-width="2" fill="none"/>
+  <g stroke="#1f4f8a" stroke-width="1.4" fill="#5b8fd1">
+    <line x1="262" y1="190" x2="256" y2="170"/><circle cx="256" cy="168" r="3.5"/>
+    <line x1="266" y1="189" x2="266" y2="167"/><circle cx="266" cy="165" r="3.5"/>
+    <line x1="270" y1="190" x2="276" y2="170"/><circle cx="276" cy="168" r="3.5"/>
+  </g>
+  <path d="M250 296 C246 330 256 350 270 354 C276 324 270 304 250 296Z" fill="#d9b98a" stroke="#8a6a3a" stroke-width="1.6"/>
+  <g stroke="#8a6a3a" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M254 376 L248 420 L236 428 M248 420 L256 430"/>
+    <path d="M270 376 L274 420 L264 430 M274 420 L284 428"/>
+  </g>
+</svg>

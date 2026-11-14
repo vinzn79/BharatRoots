@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Discover India | Indian Heritage Learning Hub</title>
+  <meta name="description" content="A welcoming, family-friendly learning hub on Indian history, festivals, geography, food, arts, values and stories, one simple lesson at a time.">
+  <meta name="theme-color" content="#f2ad6b">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Heritage Hub">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Mukta:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="bg-art" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <button class="menu-btn" id="menuBtn" aria-controls="sidebar" aria-expanded="false">☰ Menu</button>
+    <span>Indian Heritage Learning Hub</span>
+  </header>
+  <div class="scrim" id="scrim"></div>
+
+  <nav class="sidebar" id="sidebar" aria-label="Site sections">
+    <a class="brand" href="index.html">
+      <img src="images/logo.svg" alt="">
+      <span class="brand-title">Indian Heritage<br>Learning Hub<small>ONE SIMPLE LESSON AT A TIME</small></span>
+    </a>
+    <ul class="nav">
+        <li><a href="index.html" class="active" aria-current="page"><span class="num">⌂</span>Home</a></li>
+        <li><a href="history.html"><span class="num">3</span>History & Civilization</a></li>
+        <li><a href="festivals.html"><span class="num">4</span>Festivals Compass</a></li>
+        <li><a href="geography-food.html"><span class="num">5</span>Geography & Food Library</a></li>
+        <li><a href="arts.html"><span class="num">6</span>Music, Dance & Arts</a></li>
+        <li><a href="values.html"><span class="num">7</span>Values & Life Skills</a></li>
+        <li><a href="kids.html"><span class="num">8</span>Kids' Learning Hub</a></li>
+        <li><a href="newcomers.html"><span class="num">9</span>India for Newcomers</a></li>
+        <li><a href="resources.html"><span class="num">10</span>Resources & Sources</a></li>
+        <li><a href="faq.html"><span class="num">11</span>FAQ</a></li>
+        <li><a href="get-started.html"><span class="num">12</span>Start Learning</a></li>
+    </ul>
+    <div class="sidebar-foot">Lotus and peacock: India's national flower and national bird.</div>
+  </nav>
+
+  <main class="main" id="top">
+    <section class="page-banner">
+      <div>
+        
+        <h1>Discover India: History, Festivals, Food, Arts, Values, and Stories for Global Indian Families</h1>
+        <p class="lead">Explore India's history, festivals, places, food, arts, values, and stories, one simple lesson at a time.</p>
+        <div class="topic-buttons" aria-label="Start with a topic">
+          <a href="history.html">History</a><a href="festivals.html">Festivals</a><a href="geography-food.html#food">Food</a><a href="arts.html">Arts</a><a href="values.html">Values</a><a href="kids.html">Kids</a><a href="newcomers.html">Newcomers</a>
+        </div>
+      </div>
+      <img src="images/hero.svg" alt="Indian heritage skyline with rangoli, diyas and kites" width="640" height="420">
+    </section>
+
+<section class="section" id="hero">
+      <span class="section-num">1 · Hero Introduction</span>
+      <h2>Welcome to a living civilization</h2>
+      <p>India is not one single culture, language, or tradition. It is a living civilization shaped by thousands of years of history, many languages, regional customs, spiritual traditions, artistic practices, and family memories. This page brings together beginner-friendly lessons that help diaspora families and curious learners explore India with curiosity, respect, and context.</p>
+
+      <div class="grid grid-3" style="margin-top:18px">
+        <div class="card">
+          <img class="spot" src="images/spot-mountain.svg" alt="">
+          <h3>Explore the map</h3>
+          <p>Tap any state or union territory to see its capital, languages, festivals and food.</p>
+          <a class="btn" href="geography-food.html#map">Open the India map</a>
+        </div>
+        <div class="card">
+          <img class="spot" src="images/spot-book.svg" alt="">
+          <h3>Featured lesson</h3>
+          <p>New here? Start with our ten-minute overview of India, just below.</p>
+          <a class="btn" href="#ten-minutes">India in 10 Minutes</a>
+        </div>
+        <div class="card">
+          <img class="spot" src="images/spot-lotus.svg" alt="">
+          <h3>Choose your language</h3>
+          <p>
+            <label for="lang" class="sr">Language</label>
+            <select class="lang" id="lang">
+              <option>English</option>
+              <option disabled>हिन्दी (Hindi): coming soon</option>
+              <option disabled>தமிழ் (Tamil): coming soon</option>
+              <option disabled>తెలుగు (Telugu): coming soon</option>
+              <option disabled>ગુજરાતી (Gujarati): coming soon</option>
+              <option disabled>বাংলা (Bengali): coming soon</option>
+              <option disabled>മലയാളം (Malayalam): coming soon</option>
+              <option disabled>मराठी (Marathi): coming soon</option>
+            </select>
+          </p>
+          <p style="font-size:.92rem">More languages are being prepared.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:18px">
+        <h3 style="margin-top:0">Starter pack <span class="badge-soon">coming soon</span></h3>
+        <p>A printable festival calendar, an India map and a family activity sheet. Until it's ready, every page on this site prints cleanly. Use your browser's <em>Print</em> option to save any lesson as a PDF.</p>
+        <div class="topic-buttons">
+          <a class="soon" aria-disabled="true">Festival calendar (PDF)</a>
+          <a class="soon" aria-disabled="true">India map (PDF)</a>
+          <a class="soon" aria-disabled="true">Family activity sheet (PDF)</a>
+        </div>
+      </div>
+
+      <div class="note"><strong>Our approach:</strong> We present every tradition as part of India's shared and diverse heritage. No single region, religion, language, or community stands in for the whole country.</div>
+    </section>
+
+    <section class="section" id="ten-minutes">
+      <span class="section-num">Featured lesson</span>
+      <h2>India in 10 Minutes</h2>
+      <p>A quick tour to get your bearings before you dive into any topic.</p>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>The land</h3>
+          <p>India is the seventh-largest country by area. The Himalayas rise in the north, the wide Indo-Gangetic plains spread below them, the Thar Desert lies to the west and the Deccan plateau fills the south. Long coastlines run along the Arabian Sea, the Indian Ocean and the Bay of Bengal. The monsoon rains, arriving roughly from June to September, shape farming, festivals and daily life.</p>
+        </div>
+        <div class="card">
+          <h3>The people</h3>
+          <p>India is the world's most populous country, home to more than 1.4 billion people. It has 28 states and 8 union territories. The Constitution lists 22 scheduled languages, and hundreds more are spoken at home. Hindi and English are used for central government work, while each state has its own official language or languages.</p>
+        </div>
+        <div class="card">
+          <h3>The story</h3>
+          <p>One of the world's earliest cities rose in the Indus Valley about 4,500 years ago. Then came the Vedic period, the Mauryan and Gupta empires, powerful southern kingdoms like the Cholas, the Delhi Sultanate and the Mughals, the Marathas and other regional powers, and nearly two centuries of British rule. India became independent on 15 August 1947 and a republic on 26 January 1950.</p>
+        </div>
+        <div class="card">
+          <h3>The faiths</h3>
+          <p>Hinduism, Buddhism, Jainism and Sikhism began in India. Islam, Christianity, Zoroastrianism and Judaism have been part of Indian life for many centuries. Many tribal and folk traditions also flourish. Festivals from all of these traditions fill the calendar.</p>
+        </div>
+        <div class="card">
+          <h3>The table</h3>
+          <p>Indian food changes every few hundred kilometres. You'll find wheat breads and dairy in the north, rice, lentils and coconut in the south, fish and mustard in the east, and sweet-savoury vegetarian thalis in the west. Vegetarian cooking is especially rich, and Jain cooking avoids root vegetables too.</p>
+        </div>
+        <div class="card">
+          <h3>The arts</h3>
+          <p>India has two great classical music systems, Hindustani in the north and Carnatic in the south. It has several classical dance forms, such as Bharatanatyam and Kathak, and folk and tribal arts such as Warli and Madhubani. Its film industries are among the busiest in the world.</p>
+        </div>
+      </div>
+      <div class="tags" style="margin-top:14px"><span class="tag">National flower: Lotus</span><span class="tag">National bird: Indian peacock</span><span class="tag">National animal: Tiger</span><span class="tag">National tree: Banyan</span><span class="tag">National river: Ganga</span></div>
+    </section>
+
+    <section class="section" id="how-to-use">
+      <span class="section-num">2 · How to Use This Page</span>
+      <h2>Find your starting point</h2>
+      <p>Choose a topic based on your interest, age group, or available time. Each module includes a short explanation, visuals, key terms, activities, and links to deeper learning. Use the orange menu on the left (or the <strong>☰ Menu</strong> button on a phone) to move between topics.</p>
+
+      <h3>Learning paths</h3>
+      <div class="table-wrap">
+      <table class="paths">
+        <thead><tr><th>Learner</th><th>Recommended starting point</th></tr></thead>
+        <tbody>
+          <tr><td>Child aged 5–10</td><td><a href="kids.html">Kids' Learning Hub</a> and <a href="festivals.html">festival crafts</a></td></tr>
+          <tr><td>Student aged 11–18</td><td><a href="history.html">Indian history</a>, <a href="geography-food.html">geography</a>, and <a href="arts.html">arts</a></td></tr>
+          <tr><td>Parent or grandparent</td><td><a href="festivals.html">Festivals</a>, <a href="geography-food.html#food">food</a>, <a href="values.html">values</a>, and <a href="kids.html#language">language activities</a></td></tr>
+          <tr><td>Newcomer to India</td><td><a href="newcomers.html">India for Newcomers</a></td></tr>
+          <tr><td>Diaspora family reconnecting with heritage</td><td><a href="festivals.html">Festivals</a>, <a href="geography-food.html#teerth">sacred sites</a>, <a href="kids.html#stories">stories</a>, and <a href="kids.html#language">language</a></td></tr>
+          <tr><td>Teacher or community leader</td><td>Activity boxes on every page, plus <a href="resources.html">source links</a> for lesson planning</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h3>Short on time?</h3>
+      <div class="grid grid-3">
+        <div class="card"><h4>5 minutes</h4><p>Read one festival card in the <a href="festivals.html">Festivals Compass</a> or take a <a href="kids.html#quiz">kids' quiz</a>.</p></div>
+        <div class="card"><h4>20 minutes</h4><p>Open one history lesson and try its activity, or explore three states on the <a href="geography-food.html#map">map</a>.</p></div>
+        <div class="card"><h4>A weekend</h4><p>Cook a festival recipe, make a craft, and talk through the family discussion questions together.</p></div>
+      </div>
+
+      <h3>Our content principles</h3>
+      <ul class="clean">
+        <li>Historical accuracy and balanced presentation</li>
+        <li>Respect for India's religious, linguistic, and regional diversity</li>
+        <li>Simple explanations without oversimplification</li>
+        <li>Clear source links for major claims (see <a href="resources.html">Resources</a>)</li>
+        <li>Activities that families can do together</li>
+        <li>Accessibility: readable fonts, gentle colours, and a design that works on phones, tablets and computers</li>
+      </ul>
+    </section>
+
+    <div class="page-nav"><span></span><a class="btn" href="history.html">History & Civilization →</a></div>
+
+    <footer class="site-foot">
+      <p class="motto">Learn India's stories. Celebrate its diversity. Pass its heritage forward.</p>
+      <p>All illustrations on this site are original artwork made for the Indian Heritage Learning Hub. Festival dates vary each year; please check a current calendar.</p>
+    </footer>
+  </main>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
