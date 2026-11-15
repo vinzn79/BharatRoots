@@ -72,19 +72,19 @@
 <section class="section" id="map">
       <span class="section-num">4.1 · 4.2</span>
       <h2>Interactive India map: states and cultures</h2>
-      <p>Each tile is one of India's <strong>28 states</strong> and <strong>8 union territories</strong> (dashed border), placed roughly where it sits on the map. Tap or click a tile to open its profile.</p>
+      <p>This map shows India's <strong>28 states</strong> and <strong>8 union territories</strong> (dashed border), each marked with its two-letter code. Very small ones are labelled outside the map with a pointer line. Tap or click a state to open its profile.</p>
       <div class="legend">
         <span><i class="r-north"></i>North</span><span><i class="r-west"></i>West</span><span><i class="r-central"></i>Central</span><span><i class="r-east"></i>East</span><span><i class="r-ne"></i>Northeast</span><span><i class="r-south"></i>South</span>
       </div>
       <div class="grid grid-2" style="align-items:start;margin-top:12px">
-        <div class="tilemap" id="tilemap" aria-label="Tile map of Indian states"></div>
+        <div class="indiamap" id="tilemap"></div>
         <div class="card state-panel" id="statePanel" aria-live="polite">
           <h3>Pick a state</h3>
           <p>You'll see its capital, main languages, festivals, signature food, places to see, and a fun fact for kids.</p>
           <div class="activity"><strong>Try this:</strong> Find three states whose festivals appear in the <a href="festivals.html">Festivals Compass</a>.</div>
         </div>
       </div>
-      <p class="meta" style="font-size:.9rem">This is a simplified tile diagram for learning, not a to-scale or boundary map. For official maps, see the <a href="https://surveyofindia.gov.in/" target="_blank" rel="noopener">Survey of India</a>. The official <a href="https://indianculture.gov.in/" target="_blank" rel="noopener">Indian Culture Portal</a> also offers map-based access to states and heritage sites.</p>
+      <p class="meta" style="font-size:.9rem">A simplified map for learning, showing India's boundaries as officially depicted. It is not for measuring distances or settling boundaries; for official maps, see the <a href="https://surveyofindia.gov.in/" target="_blank" rel="noopener">Survey of India</a>. Map outlines: <a href="https://github.com/datameet/maps" target="_blank" rel="noopener">DataMeet India community</a> (CC BY 4.0). The official <a href="https://indianculture.gov.in/" target="_blank" rel="noopener">Indian Culture Portal</a> also offers map-based access to states and heritage sites.</p>
       <div class="activity"><strong>Use the layers:</strong> switch the map to <em>Language families</em> and find the four big families of Indian languages. Then try <em>UNESCO World Heritage</em>: which state has the most sites? Under <em>Food</em>, every state has a recipe you can cook together.</div>
     </section>
 
@@ -261,6 +261,7 @@
   </main>
 
   <script src="js/states.js"></script>
+  <script src="js/indiamap.js"></script>
   <script src="js/recipes.js"></script>
   <script src="js/main.js"></script>
 </body>
