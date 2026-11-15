@@ -219,7 +219,7 @@
   if (tilemap && window.INDIA_STATES && T.states) {
     window.INDIA_STATES.forEach(function (s) { var x = T.states[s.id]; if (x) for (var k in x) s[k] = x[k]; });
   }
-  if (tilemap && window.INDIA_STATES) {
+  if (tilemap && window.INDIA_STATES && window.INDIA_MAP) {
     var panel = $("#statePanel");
     var REG = t("regions", { north: "North India", south: "South India", east: "East India", west: "West India", central: "Central India", ne: "Northeast India" });
     var FAM = t("fams", { ia: "Indo-Aryan", dr: "Dravidian", tb: "Tibeto-Burman", aa: "Austroasiatic" });
@@ -240,11 +240,12 @@
     (legend || tilemap).parentNode.insertBefore(bar, legend || tilemap);
     var listBox = document.createElement("div"); listBox.className = "layer-list"; listBox.id = "layerList";
     tilemap.parentNode.parentNode.insertBefore(listBox, tilemap.parentNode.nextSibling);
-    var legendHTML = legend ? legend.innerHTML : "";
+    var legendHTML = ["north", "west", "central", "east", "ne", "south"].map(function (k) { return '<span><i class="r-' + k + '"></i>' + REG[k].replace(/ India$/, "") + "</span>"; }).join("");
     var tiles = {};
     var ucount = function (s) { return (s.unesco || []).length; };
     var showState = function (s, b) {
-      $$(".tile", tilemap).forEach(function (x) { x.classList.toggle("on", x === b); });
+      $$(".st", tilemap).forEach(function (x) { x.classList.toggle("on", x === b); });
+      if (b && b.parentNode) b.parentNode.appendChild(b);
       var extra = "";
       if (isEn || T.layersAll) {
         if (s.dance) extra += "<p><strong>" + t("lyDance", "Dance") + ":</strong> " + s.dance + "</p>";
@@ -264,27 +265,46 @@
         (r && recipeBox ? '<p><button type="button" class="btn" data-cook="' + s.id + '">🍲 ' + t("cook", "Cook") + ": " + r.dish + " →</button></p>" : "");
       if (window.innerWidth < 860) panel.scrollIntoView({ behavior: "smooth", block: "start" });
     };
+    var M = window.INDIA_MAP, NS = "http://www.w3.org/2000/svg";
+    var mk = function (tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var a in attrs) e.setAttribute(a, attrs[a]); if (parent) parent.appendChild(e); return e; };
+    var svg = mk("svg", { viewBox: M.vb, role: "group", "aria-label": t("mapAria", "Map of India's states and union territories") }, tilemap);
+    var gShapes = mk("g", {}, svg), gLab = mk("g", { "class": "st-labels", "aria-hidden": "true" }, svg), gBadge = mk("g", { "class": "st-badges", "aria-hidden": "true" }, svg);
+    var labelAt = {};
     window.INDIA_STATES.forEach(function (s) {
-      var b = document.createElement("button");
-      b.type = "button";
-      b.className = "tile r-" + s.region + (s.ut ? " ut" : "");
-      b.style.gridColumn = (s.c + 1) + " / span " + (s.w || 1);
-      b.style.gridRow = String(s.r + 1);
-      b.textContent = s.id;
-      b.title = s.n;
-      b.setAttribute("aria-label", s.n + (s.ut ? " (" + t("ut", "Union territory") + ")" : ""));
-      b.addEventListener("click", function () { showState(s, b); });
-      tilemap.appendChild(b); tiles[s.id] = b;
+      var g = mk("g", { "class": "st r-" + s.region + (s.ut ? " ut" : ""), tabindex: "0", role: "button", "data-id": s.id, "aria-label": s.n + (s.ut ? " (" + t("ut", "Union territory") + ")" : "") }, gShapes);
+      mk("path", { d: M.p[s.id] }, g);
+      mk("title", {}, g).textContent = s.n;
+      var go = function () { showState(s, g); };
+      g.addEventListener("click", go);
+      g.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+      tiles[s.id] = g;
+      var c = M.c[s.id], l = M.l[s.id];
+      if (c) {
+        var cg = mk("g", { "class": "callout", "data-id": s.id }, gLab);
+        mk("line", { x1: c[0], y1: c[1], x2: c[2], y2: c[3] }, cg);
+        mk("circle", { cx: c[2], cy: c[3], r: 1.4 }, cg);
+        mk("rect", { x: c[0] - 9, y: c[1] - 6, width: 18, height: 12, rx: 3 }, cg);
+        mk("text", { x: c[0], y: c[1] }, cg).textContent = s.id;
+        cg.addEventListener("click", go);
+        labelAt[s.id] = [c[0], c[1]];
+      } else if (l) {
+        mk("text", { x: l[0], y: l[1] }, gLab).textContent = s.id;
+        labelAt[s.id] = l;
+      }
     });
     var esc = function (x) { return String(x).replace(/</g, "&lt;"); };
     var drawLayer = function () {
       $$("button", bar).forEach(function (x) { x.classList.toggle("on", x.getAttribute("data-ly") === layer); });
+      gBadge.innerHTML = "";
       window.INDIA_STATES.forEach(function (s) {
         var b = tiles[s.id];
-        b.className = "tile" + (s.ut ? " ut" : "") + (b.classList.contains("on") ? " on" : "");
-        b.removeAttribute("data-badge");
+        b.setAttribute("class", "st" + (s.ut ? " ut" : "") + (b.classList.contains("on") ? " on" : ""));
         if (layer === "fam") b.classList.add("f-" + (s.fam || "ia"));
-        else if (layer === "unesco") { var n = ucount(s); b.classList.add("u-" + Math.min(n, 4)); if (n) b.setAttribute("data-badge", n); }
+        else if (layer === "unesco") {
+          var n = ucount(s); b.classList.add("u-" + Math.min(n, 4));
+          var p = labelAt[s.id];
+          if (n && p) { var bg = mk("g", {}, gBadge); mk("circle", { cx: p[0] + 11, cy: p[1] - 7, r: 5.2 }, bg); mk("text", { x: p[0] + 11, y: p[1] - 7 }, bg).textContent = n; }
+        }
         else b.classList.add("r-" + s.region);
       });
       if (legend) {
@@ -335,7 +355,7 @@
       var AL = t("allergens", { dairy: "dairy", gluten: "gluten", nuts: "tree nuts", peanuts: "peanuts", soy: "soy", fish: "fish", shellfish: "shellfish", sesame: "sesame", mustard: "mustard" });
       card.hidden = false;
       card.innerHTML = '<p class="meta">' + STN[id] + '</p><h3>' + r.dish + "</h3>" + '<div class="tags">' + badge(r) +
-        '<span class="tag">⏱ ' + r.time + '</span><span class="tag">🍽 ' + t("serves", "Serves") + " " + r.serves + "</span></div>" +
+        '<span class="tag">⏱ ' + r.time + '</span><span class="tag">🍽 ' + (t("serves", "Serves").indexOf("{n}") > -1 ? t("serves", "Serves").replace("{n}", r.serves) : t("serves", "Serves") + " " + r.serves) + "</span></div>" +
         "<p>" + r.about + "</p>" +
         '<p class="allergy"><strong>' + t("contains", "Contains") + ":</strong> " + (r.al.length ? r.al.map(function (a) { return AL[a] || a; }).join(", ") : t("noMajor", "none of the common allergens listed here")) + ". " + t("checkLabels", "Always check packet labels (for example, hing often contains wheat).") + "</p>" +
         '<div class="grid grid-2 rb-cols"><div><h4>' + t("ingredients", "Ingredients") + '</h4><ul>' + r.ing.map(function (x) { return "<li>" + x + "</li>"; }).join("") + "</ul></div>" +

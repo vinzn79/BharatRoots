@@ -654,3 +654,28 @@ html:not([lang="en"]) .brand-title small, html:not([lang="en"]) .eyebrow, html:n
 @media (prefers-reduced-motion: reduce) { .scene * , .story-stage.enter, .story-text.enter { animation: none !important; } }
 .kit-card small { display: block; color: var(--text-soft); font-size: .82rem; }
 .kit-card img { max-height: 120px; object-fit: contain; }
+
+/* ---------- India state map (SVG) ---------- */
+.indiamap { width: 100%; max-width: 620px; margin: 0 auto 16px; }
+#map .grid-2 { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
+@media (max-width: 860px) { #map .grid-2 { grid-template-columns: 1fr; } }
+.indiamap svg { display: block; width: 100%; height: auto; background: #eaf4f8; border-radius: 14px; }
+.indiamap .st { cursor: pointer; outline: none; }
+.indiamap .st path { stroke: #7a4a20; stroke-width: .6; stroke-linejoin: round; vector-effect: non-scaling-stroke; transition: fill .15s ease; }
+.indiamap .st.ut path { stroke-dasharray: 3 2; }
+.indiamap .st:hover path, .indiamap .st:focus-visible path { filter: brightness(1.08); stroke-width: 1.4; }
+.indiamap .st.on path { stroke: #a8461a; stroke-width: 2.6; }
+.st.r-north { fill: #f7c98b; } .st.r-south { fill: #b9dfb3; } .st.r-east { fill: #f4b7a3; } .st.r-west { fill: #f9e08a; } .st.r-central { fill: #d9c6ee; } .st.r-ne { fill: #a9d6e5; }
+.st.f-ia { fill: #f7c98b; } .st.f-dr { fill: #b9dfb3; } .st.f-tb { fill: #a9d6e5; } .st.f-aa { fill: #d9c6ee; }
+.st.u-0 { fill: #efe7d2; } .st.u-1 { fill: #f9dca4; } .st.u-2 { fill: #f2b974; } .st.u-3 { fill: #e5934e; } .st.u-4 { fill: #c96a2c; }
+.indiamap text { font: 700 9px/1 system-ui, -apple-system, "Segoe UI", sans-serif; fill: #2f2214; text-anchor: middle; dominant-baseline: central; pointer-events: none; paint-order: stroke; stroke: rgba(255,255,255,.75); stroke-width: 2px; }
+.indiamap .callout { cursor: pointer; }
+.indiamap .callout line { stroke: #3b2a1a; stroke-width: .7; }
+.indiamap .callout circle { fill: #3b2a1a; }
+.indiamap .callout rect { fill: #fff; stroke: #3b2a1a; stroke-width: .6; }
+.indiamap .callout text { font-size: 8px; stroke: none; }
+.indiamap .callout:hover rect { fill: #ffe2b8; }
+.indiamap .st-badges circle { fill: #7a3210; }
+.indiamap .st-badges text { fill: #fff; font-size: 7px; stroke: none; }
+@media (max-width: 520px) { .indiamap text { font-size: 11px; } .indiamap .callout text { font-size: 9px; } }
+@media (prefers-reduced-motion: reduce) { .indiamap .st path { transition: none; } }
